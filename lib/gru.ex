@@ -100,7 +100,13 @@ defmodule Gru do
 
   @doc "Repeats a command in a given interval. You can use this to monitor services."
   def repeat interval, command, complete do
-    :timer.apply_interval(interval, Gru, :local, [command, complete])
+    :timer.send_after interval, :repeat
+
+    receive do
+      :repeat ->
+        Gru.local command, complete
+        Gru.repeat interval, command, complete
+    end
   end
 
   def print_output node, result do
