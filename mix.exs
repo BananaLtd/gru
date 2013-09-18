@@ -19,6 +19,6 @@ defmodule Gru.Mixfile do
   # Returns the list of dependencies in the format:
   # { :foobar, "0.1", git: "https://github.com/elixir-lang/foobar.git" }
   defp deps do
-    [ { :minion, "0.0.2", github: "BananaLtd/minion" } ]
+    [ { :minion, github: "BananaLtd/minion", branch: "experimental" } ]
   end
 end
